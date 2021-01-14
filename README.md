@@ -30,7 +30,7 @@ On dispose de plusieurs sources de données, accessibles via des services:
 
 ### Etape n°1
 
-Implémenter dans *app.js* la fonction *findHotelsNearby()* permettant de retourner la liste des hôtels dans un rayon de 2 km autour d'une position donnée.
+Implémenter dans *app.js* la fonction *findHotelsNearby()* permettant de retourner la liste des hôtels dans un rayon de 2 km autour d'une position donnée. Vous pouvez librement ajouter du code aux services si besoin.
 
 Inclure également dans le résultat la distance (nombre entier en mètres) entre la position et celle de l'hôtel.
 
@@ -59,7 +59,7 @@ Inclure également dans le résultat la distance (nombre entier en mètres) entr
 
 ### Etape n°2
 
-Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOffer()* permettant de retourner l'hôtel proposant la chambre moins chère (ne prendre que les offres de type *STANDARD*) dans un rayon de 2 km autour d'une position donnée, pour une date donnée. En cas d'égalité sur le prix, retourner l'hôtel le plus proche.
+Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOffer()* permettant de retourner l'hôtel proposant la chambre moins chère (ne prendre que les offres de type *STANDARD*) dans un rayon de 2 km autour d'une position donnée, pour une date donnée. En cas d'égalité sur le prix, retourner l'hôtel le plus proche. Vous pouvez librement ajouter du code aux services si besoin.
 
 *Exemple de structure de réponse attendue:*
 ```json
@@ -112,7 +112,7 @@ Ces utilisateurs peuvent réserver des chambres avec un prix de type "SPECIAL_OF
 }
 ```
 
-Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOfferForUser()* permettant de retourner l'offre de chambre la moins chère parmi les hôtels dans un rayon de 2 km autour d'une position donnée, pour une date donnée, et pour un profil utilisateur donné.
+Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOfferForUser()* permettant de retourner l'offre de chambre la moins chère parmi les hôtels dans un rayon de 2 km autour d'une position donnée, pour une date donnée, et pour un profil utilisateur donné. Vous pouvez librement ajouter du code aux services si besoin.
 
 ### Etape n°4
 
