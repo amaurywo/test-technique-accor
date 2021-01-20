@@ -4,6 +4,13 @@ const getUsers = () => {
 	return USERS;
 }
 
+const userIsSubscribed = (userId) => {
+	const users = getUsers();
+	return users.find(ele => ele.id === userId).subscribed;
+}
+
+
 module.exports = {
-	getUsers: getUsers
+	getUsers: getUsers,
+	userIsSubscribed: userIsSubscribed
 }
