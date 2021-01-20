@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Test technique</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
 </head>
+
 <body>
     <!-- Les images et logos sont disponibles dans ./resources -->
-    <img src="./resources/hotel.jpg"/>
+    <article class="hotel">
+        <div class="hotel_content">
+            <img src="./resources/hotel.jpg" class="hotel__img" alt="Chambre double Novotel Paris Les Halles" />
+            <div class="hotel__desc">
+                <header class="hotel_title-block">
+                    <h1 class="hotel_title"> ibis Styles Paris Nation Porte de Montreuil
+                        <sup class="title-block__stars">
+                            <img src="./resources/rating-star.svg" class="icon rating__star" aria-hidden="true" alt="" />
+                            <img src="./resources/rating-star.svg" class="icon rating__star" aria-hidden="true" alt="" />
+                            <img src="./resources/rating-star.svg" class="icon rating__star" aria-hidden="true" alt="" />
+                        </sup>
+                    </h1>
+                    <p class="hotel_search-details">
+                        Hôtels - 0.1 km de votre recherche
+                    </p>
+                    <div class="hotel_tripadvisor-content">
+                        <p class="tripadvisor">
+                            <img src="./resources/tripadvisor.png" class="icon tripadvisor__icon" aria-hidden="true" alt="" />
+                            <span class="tripadvisor__score">3/5 </span>
+                            <span class="tripadvisor__avis"> (5563 Avis)  </span>
+                        </p>
+                        <ul class="list__amenities">
+                            <li class="item__amenity">
+                                <img src="./resources/parking.svg" class="icon" aria-hidden="true" alt="" />
+                            </li>
+                            <li class="item__amenity">
+                                <img src="./resources/wifi.svg" class="icon" aria-hidden="true" alt="" />
+                            </li>
+                            <li class="item__amenity">
+                                <img src="./resources/restaurant.svg" class="icon" aria-hidden="true" alt="" />
+                            </li>
+                            <li class="item__amenity">
+                                <img src="./resources/air-conditioning.svg" class="icon" aria-hidden="true" alt="" />
+                            </li>
+                            <li class="item__amenity">
+                                <img src="./resources/beverage.svg" class="icon" aria-hidden="true" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                </header>
+
+                <div class="hotel_details-block">
+                    <h2 class="block__title">TARIF À PARTIR DE (1)</h2>
+                    <div class="info-block__reservation">
+                        <span>Pour 1 nuit | 1 adulte</span>
+                    </div>
+                    <div class="info-block__price">
+                        <span class="info-public__price">
+                            Public
+                            <span class="block__price">
+                                <span class="price__value">70</span>
+                                <span class="currency__symbol"> € </span>
+                            </span>
+                        </span>
+                        <span class="divider"> | </span>
+                        <span class="info-membre__price">
+                            Membre 
+                            <span class="block__price">
+                                <span class="price__value">70</span>
+                                <span class="currency__symbol"> € </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hotel_cta-block">
+            <div class="hotel__cta-link">
+                <a href="#" class="link">  Voir le calendrier des prix </a>
+            </div>
+            <div class="hotel__cta-btn">
+                <button type="button" class="btn"> Sélectionner une chambre </button>
+            </div>
+            
+        </div>
+    </article>
 </body>
 </html>
