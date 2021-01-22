@@ -24,7 +24,7 @@
     width: 100%;
   }
   
-  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title {
+  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title-content {
     color: #252339;
     display: 0;
     font-size: 1.5rem;
@@ -39,7 +39,7 @@
     .hotel_content
     .hotel__desc
     .hotel_title-block
-    .hotel_title
+    .hotel_title-content
     .title-block__stars
     .icon {
     display: inline-block;
