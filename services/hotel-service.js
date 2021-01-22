@@ -1,35 +1,36 @@
-const HOTELS = require('./data/hotels.json').hotels;
+const HOTELS = require("./data/hotels.json").hotels;
 
 const getHotels = () => {
-	return HOTELS;
-}
+  return HOTELS;
+};
 
 const closestHotel = (hotelsWithBestPrice, hotelsNear) => {
-	let hotelBestPrice = null;
-	let distanceMin = null;
+  let hotelBestPrice = null;
+  let distanceMin = null;
 
-    for (let i = 0; i < hotelsWithBestPrice.length; ++i) {
-      let ridCode = hotelsWithBestPrice[i].ridCode;
-      let index = hotelsNear.map((ele) => { return ele.ridCode; }).indexOf(ridCode);
-      let hotel = hotelsNear[index];
+  hotelsWithBestPrice.forEach((item) => {
+    let ridCode = item.ridCode;
+	let index = hotelsNear.map((ele) => { return ele.ridCode; }).indexOf(ridCode);
+	let hotel = hotelsNear[index];
 
-      if (hotel) {
-        if (distanceMin === null) {
+    if (hotel) {
+      if (distanceMin === null) {
+        distanceMin = hotel.distance;
+        hotelBestPrice = hotel;
+      } else {
+        if (hotel.distance < distanceMin) {
           distanceMin = hotel.distance;
           hotelBestPrice = hotel;
-        } else {
-          if (hotel.distance < distanceMin) {
-            distanceMin = hotel.distance;
-            hotelBestPrice = hotel;
-          }
         }
-        hotelBestPrice.offre = hotelsWithBestPrice[i].offre;
-      } 
-	}
-	return hotelBestPrice;
-}
+      }
+      hotelBestPrice.offre = item.offre;
+    }
+  });
+
+  return hotelBestPrice;
+};
 
 module.exports = {
-	getHotels: getHotels,
-	closestHotel:closestHotel
-}
+  getHotels: getHotels,
+  closestHotel: closestHotel,
+};

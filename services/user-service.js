@@ -5,8 +5,7 @@ const getUsers = () => {
 }
 
 const userIsSubscribed = (userId) => {
-	const users = getUsers();
-	return users.find(ele => ele.id === userId).subscribed;
+	return users = getUsers().find(ele => ele.id === userId).subscribed;
 }
 
 

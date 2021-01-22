@@ -1,246 +1,246 @@
 .hotel {
-  font-family: Roboto, Arial, sans-serif;
-  margin: 0 auto;
-  max-width: 980px;
-  box-shadow: 0 6px 20px 0 rgba(13, 35, 45, 0.2);
-  padding: 24px;
-  background: #fff;
-  border: 1px solid #dadadd;
-  border-radius: 6px;
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0 auto;
+    max-width: 980px;
+    box-shadow: 0 6px 20px 0 rgba(13, 35, 45, 0.2);
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #dadadd;
+    border-radius: 6px;
+  }
+  
+  .hotel .hotel_content {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .hotel .hotel_content img {
+    border-radius: 6px;
+  }
+  
+  .hotel .hotel_content .hotel__desc {
+    align-self: center;
+    margin-left: 25px;
+    width: 100%;
+  }
+  
+  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title {
+    color: #252339;
+    display: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_title
+    .title-block__stars
+    .icon {
+    display: inline-block;
+    fill: #1e1852;
+    font-weight: 400;
+    height: 0.5rem;
+    margin: 0 1px;
+    width: 0.5rem;
+  }
+  
+  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_search-details {
+    color: #3e3d48;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 16px;
+    margin: 0;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .tripadvisor {
+    margin: 5px 0;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .tripadvisor
+    .tripadvisor__score {
+    color: #3e3d48;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .tripadvisor
+    .tripadvisor__avis {
+    color: #3e3d48;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .list__amenities {
+    list-style: inside;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .list__amenities
+    .item__amenity {
+    display: inline;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_title-block
+    .hotel_tripadvisor-content
+    .list__amenities
+    .item__amenity
+    .icon {
+    fill: #1e1852;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  
+  .hotel .hotel_content .hotel__desc .hotel_details-block {
+    background-color: #f4f4f5;
+    border-radius: 6px;
+    margin-top: 30px;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .hotel .hotel_content .hotel__desc .hotel_details-block .block__title {
+    background-color: white;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    line-height: 1.5rem;
+    margin: 0;
+    padding: 0 12px;
+    position: absolute;
+    right: 20px;
+    text-transform: uppercase;
+    top: -12px;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__reservation {
+    color: #6f6e77;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .hotel .hotel_content .hotel__desc .hotel_details-block .info-block__price {
+    display: block;
+    font-size: 0.875rem;
+    text-align: right;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .divider {
+    padding: 0 5px;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .info-public__price {
+    color: #3e3d48;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .info-membre__price {
+    color: #3d4892;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .info-public__price
+    .price__value {
+    font-size: 1rem;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .info-membre__price
+    .price__value {
+    font-size: 1.5rem;
+  }
+  
+  .hotel
+    .hotel_content
+    .hotel__desc
+    .hotel_details-block
+    .info-block__price
+    .block__price {
+    font-weight: bold;
+  }
+  
+  .hotel .hotel__cta-btn {
+    text-align: right;
+  }
+  
+  .hotel .hotel__cta-btn .btn {
+    background-color: #068484;
+    border-radius: 60px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 10px;
+    padding: 8px 24px;
+  }
+  
+  .hotel .hotel__cta-link {
+    position: relative;
+    text-align: center;
+    top: 40px;
 }
-
-.hotel .hotel_content {
-  display: flex;
-  flex-direction: row;
-}
-
-.hotel .hotel_content img {
-  border-radius: 6px;
-}
-
-.hotel .hotel_content .hotel__desc {
-  align-self: center;
-  margin-left: 25px;
-  width: 100%;
-}
-
-.hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title {
-  color: #252339;
-  display: 0;
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0;
-  text-overflow: ellipsis;
-  text-transform: capitalize;
-  white-space: nowrap;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_title
-  .title-block__stars
-  .icon {
-  display: inline-block;
-  fill: #1e1852;
-  font-weight: 400;
-  height: 0.5rem;
-  margin: 0 1px;
-  width: 0.5rem;
-}
-
-.hotel .hotel_content .hotel__desc .hotel_title-block .hotel_search-details {
-  color: #3e3d48;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 16px;
-  margin: 0;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .tripadvisor {
-  margin: 5px 0;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .tripadvisor
-  .tripadvisor__score {
-  color: #3e3d48;
-  font-weight: 700;
-  font-size: 0.75rem;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .tripadvisor
-  .tripadvisor__avis {
-  color: #3e3d48;
-  font-size: 0.75rem;
-  margin-left: 0.5rem;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .list__amenities {
-  list-style: inside;
-  margin: 0;
-  padding: 0;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .list__amenities
-  .item__amenity {
-  display: inline;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_title-block
-  .hotel_tripadvisor-content
-  .list__amenities
-  .item__amenity
-  .icon {
-  fill: #1e1852;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.hotel .hotel_content .hotel__desc .hotel_details-block {
-  background-color: #f4f4f5;
-  border-radius: 6px;
-  margin-top: 30px;
-  padding: 20px;
-  position: relative;
-}
-
-.hotel .hotel_content .hotel__desc .hotel_details-block .block__title {
-  background-color: white;
-  border-radius: 20px;
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0 12px;
-  position: absolute;
-  right: 20px;
-  text-transform: uppercase;
-  top: -12px;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__reservation {
-  color: #6f6e77;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  margin-top: 20px;
-  text-align: right;
-}
-
-.hotel .hotel_content .hotel__desc .hotel_details-block .info-block__price {
-  display: block;
-  font-size: 0.875rem;
-  text-align: right;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .divider {
-  padding: 0 5px;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .info-public__price {
-  color: #3e3d48;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .info-membre__price {
-  color: #3d4892;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .info-public__price
-  .price__value {
-  font-size: 1rem;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .info-membre__price
-  .price__value {
-  font-size: 1.5rem;
-}
-
-.hotel
-  .hotel_content
-  .hotel__desc
-  .hotel_details-block
-  .info-block__price
-  .block__price {
-  font-weight: bold;
-}
-
-.hotel .hotel__cta-btn {
-  text-align: right;
-}
-
-.hotel .hotel__cta-btn .btn {
-  background-color: #068484;
-  border-radius: 60px;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  margin-top: 10px;
-  padding: 8px 24px;
-}
-
-.hotel .hotel__cta-link {
-  text-align: center;
-  margin-top: 20px;
-  position: absolute;
-  width: 100%;
-}
+  

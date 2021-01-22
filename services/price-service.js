@@ -7,28 +7,22 @@ const getPrices = () => {
 };
 
 const getHotelsWithBestPriceByFare = (date, fare) => {
-  const prices = getPrices();
   priceMin = null;
   offersMinPrice = [];
-  let pricesLength = prices.length;
-  let fareOption;
 
-  for (let i = 0; i < pricesLength; ++i) {
-    let offers = prices[i].offers;
-    let offersLength = offers.length;
-
-    for (let j = 0; j < offersLength; ++j) {
-      if (fare === "ALL") {
-		if (offers[j].date === date) {
-			getPriceMin( offers[j].price, offers[j].date, offers[j].fare, prices[i].ridCode );
-		  }
+  getPrices().forEach((price) => {
+    price.offers.forEach((offer) => {
+      if (fare) {
+        if (offer.date === date && offer.fare === fare) {
+          getPriceMin(offer.price, offer.date, offer.fare, price.ridCode);
+        }
       } else {
-        if (offers[j].date === date && offers[j].fare === fare) {
-          getPriceMin( offers[j].price, offers[j].date, offers[j].fare, prices[i].ridCode );
+        if (offer.date === date) {
+          getPriceMin(offer.price, offer.date, offer.fare, price.ridCode);
         }
       }
-    }
-  }
+    });
+  });
 
   return offersMinPrice;
 };
@@ -37,21 +31,15 @@ const getPriceMin = (price, date, fare, ridCode) => {
   if (priceMin === null) {
     // case 0
     priceMin = price;
-    offersMinPrice.push({
-      ridCode, offre: { date, fare, price }
-    });
+    offersMinPrice.push({ridCode, offre: { date, fare, price }, });
   } else {
     // other cases
     if (price === priceMin) {
-      offersMinPrice.push({
-        ridCode, offre: { date, fare, price }
-      });
+      offersMinPrice.push({ridCode, offre: { date, fare, price },});
     } else if (price < priceMin) {
       priceMin = price;
       offersMinPrice = [];
-      offersMinPrice.push({
-        ridCode, offre: { date, fare, price }
-      });
+      offersMinPrice.push({ ridCode, offre: { date, fare, price }, });
     }
   }
 };
