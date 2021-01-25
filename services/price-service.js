@@ -31,15 +31,15 @@ const getPriceMin = (price, date, fare, ridCode) => {
   if (priceMin === null) {
     // case 0
     priceMin = price;
-    offersMinPrice.push({ridCode, offre: { date, fare, price }, });
+    offersMinPrice.push({ridCode, offer: { date, fare, price }, });
   } else {
     // other cases
     if (price === priceMin) {
-      offersMinPrice.push({ridCode, offre: { date, fare, price },});
+      offersMinPrice.push({ridCode, offer: { date, fare, price },});
     } else if (price < priceMin) {
       priceMin = price;
       offersMinPrice = [];
-      offersMinPrice.push({ ridCode, offre: { date, fare, price }, });
+      offersMinPrice.push({ ridCode, offer: { date, fare, price }, });
     }
   }
 };

@@ -24,7 +24,7 @@
     width: 100%;
   }
   
-  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title-content {
+  .hotel .hotel_content .hotel__desc .hotel_title-block .hotel_title {
     color: #252339;
     display: 0;
     font-size: 1.5rem;
@@ -238,7 +238,7 @@
     padding: 8px 24px;
   }
   
-  .hotel .hotel__cta-link {
+ .hotel .hotel__cta-link {
     position: relative;
     text-align: center;
     top: 40px;

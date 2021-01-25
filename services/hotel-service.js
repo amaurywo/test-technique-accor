@@ -9,9 +9,9 @@ const closestHotel = (hotelsWithBestPrice, hotelsNear) => {
   let distanceMin = null;
 
   hotelsWithBestPrice.forEach((item) => {
-    let ridCode = item.ridCode;
-	let index = hotelsNear.map((ele) => { return ele.ridCode; }).indexOf(ridCode);
-	let hotel = hotelsNear[index];
+    let hotel =  hotelsNear.filter((ele) => {
+      if (item.ridCode === ele.ridCode) return ele;
+    });
 
     if (hotel) {
       if (distanceMin === null) {
@@ -23,7 +23,7 @@ const closestHotel = (hotelsWithBestPrice, hotelsNear) => {
           hotelBestPrice = hotel;
         }
       }
-      hotelBestPrice.offre = item.offre;
+      hotelBestPrice.offer = item.offer;
     }
   });
 
