@@ -1,0 +1,83 @@
+button {
+    background-color: darkgreen;
+    border-radius: 1rem;
+    color: #fff;
+    padding :0.5rem;
+    border: none;
+    position: absolute;
+    left: 50rem;
+}
+
+a {
+    color: darkgreen;
+}
+
+.result {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    padding: 1rem;
+    border: 1px solid lightgrey;
+
+    width: 60rem;
+}
+
+    .flex-item {
+        min-height: 15rem;
+    }
+
+    .hotel-photo {
+        flex-grow: 1;
+        margin-right; 0.5rem;
+    }
+
+    .hotel-infos {
+        flex-grow: 3;
+    }
+
+        .rating-star {
+            height: 0.5rem;
+            transform: translateY(-0.6rem)
+        }
+
+        .hotel-service-icon {
+            margin-top: 0.5rem;
+            height: 1.5rem;
+        }
+
+        .hotel-tarif {
+            background-color: lightgrey;
+            min-height: 4.5rem;
+
+            padding-top: 2rem;
+        }
+
+            .hotel-tarif-number {
+                font-size: 0.8rem;
+                font-weight: bold;
+                padding: 0.2rem 0.5rem;
+                background-color: #fff;
+                border-radius: 1rem;
+
+                float: right;
+                margin-right: 1rem;
+                transform: translateY(-2.5rem);
+
+                text-transform: uppercase;
+            }
+
+            .hotel-tarif-night {
+            display: block;
+                float: right;
+                margin-right: 1rem;
+            }
+
+    .hotel-actions {
+        flex-grow: 4;
+
+        padding-top: 1.5rem;
+
+        text-align: center;
+    }
+
