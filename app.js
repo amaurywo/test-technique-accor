@@ -7,6 +7,7 @@ const moment = require('./node_modules/moment/min/moment-with-locales.min.js');
 
 //Etape 1
 function findHotelsNearby(lat, lng, radius) {
+
     const hotels = hotelService.getHotels();
 
     if (hotels.length <= 0 || lat == null || lng == null || radius == null ) {
@@ -27,154 +28,123 @@ function findHotelsNearbyByDate(lat, lng, radius, date) {
         const nearbyHotels = findHotelsNearby(lat, lng, radius);
         const ridCodes = getRidCodes(nearbyHotels);
 
-        const offersByDate = findOffersByDate(date, ridCodes);
-
-        return offersByDate;
+        return findOffersByDate(date, ridCodes);
    }
 }
 
 //Etape 2
-function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
+function findHotelNearbyWithBestOffer(lat, lng, radius, date, userType) {
 
     if (lat == null || lng == null || date == null) return null;
 
-    const standard = "STANDARD";
-    const hotels = findHotelsNearby(lat, lng, radius);
-    const ridCodes = getRidCodes(hotels);
+    const offerType = userType != null ? userType : "STANDARD";
 
-    const offersByDate = findOffersByDate(date, ridCodes);
+    const offersByDate = findHotelsNearbyByDate(lat, lng, radius, date);
 
-    const offersByDateAndOfferType = findByOfferType(offersByDate, standard);
+    const offersByDateAndOfferType = findByOfferType(offersByDate, offerType);
 
-    return findBestOffer(offersByDateAndOfferType);
+    return findBestOffer(offersByDateAndOfferType, lat, lng);
 }
 
 //Etape 3
 function findHotelNearbyWithBestOfferForUser(lat, lng, radius, date, userId) {
 
-    return null;
+    if (lat == null || lng == null || radius == null ||date == null || userId == null) {
+        return null;
+    }
+
+    const user = getUserById(userId);
+
+    const userType = getUserType(user);
+
+    return findHotelNearbyWithBestOffer(lat, lng, radius, date, userType);
 }
 
 
-/*
-function findOffersByDate(date) {
-    const offers = priceService.getPrices();
-    return offers.filter((offer) => isSameDate(date, offer.date));
-}*/
-
 function findOffersByDate(date, ridCodes) {
+
     let prices = priceService.getPrices();
     if (ridCodes) {
         prices = prices.filter( (price) => ridCodes.includes(price.ridCode));
     }
-    return prices.filter((pricesByHotel) => pricesByHotel.offers.filter( (offer) => isSameDate(date, offer.date)) );
-    //return prices.filter((pricesByHotel) => pricesByHotel.offers.filter( (offer) => offer.date == date) );
+
+    for (let i=0; i < prices.length; i++) {
+        prices[i].offers = prices[i].offers.filter( (offer) => offer.date == date );
+    }
+    const offers = prices.filter( (price) => price.offers.length > 0);
+    return offers;
 }
 
-function getHotelsOffersByType(offers, offerType) {
-    //const prices = priceService.getPrices();
-    return prices.filter( (prices) => findByOfferType(prices.offers, offerType));
+function findByOfferType(prices, offerType) {
+
+    const copy = JSON.parse(JSON.stringify(prices));
+
+    for (let i=0; i < copy.length; i++) {
+        let off = copy[i].offers;
+        copy[i].offers = off.filter((offer) => offer.fare == offerType);
+    }
+    return copy;
 }
 
-function findByOfferType(offers, offerType) {
-    return offers.filter((offer) => offer.fare == offerType);
-}
+function findBestOffer(offers, lat, lng) {
 
-function isSameDate(targetDate, dateToTest) {
-    let tgtDate = targetDate
+    if (offers == null || offers.length == 0) {
+        return { "ridCode": null };
+    }
 
-}
+    let bestOffer = null; //init
 
-/*function isSameDate(targetDate, dateToTest) {
-    return moment(dateToTest.replaceAll('/','-'), 'DD-MM-YYYY').isSame(targetDate, 'day');
-}
-
-function isSameDate(targetDate, dateToTest) {
-    let mTgtDate = moment(dateToTest, "DD/MM/YYYY", 'fr');
-    let mDateToTest = moment(targetDate, "DD/MM/YYYY", 'fr');
-
-    return !mDateToTest.isBefore(mTgtDate) && !mDateToTest.isAfter(mTgtDate);
-}
-
-function isSameDate(targetDate, dateToTest) {
-    let mTgtDate = Date.parse(dateToTest);
-    let mDateToTest = moment(targetDate, "DD/MM/YYYY");
-
-    return !mDateToTest.isBefore(mTgtDate) && !mDateToTest.isAfter(mTgtDate);
-}*/
-
-
-function findBestOffer(offers) {
-
-    let bestOffer = offers.reduce( (prev, curr) => {
-        if (prev.price == curr.price) {
-            findClosestHotel(prev.ridCode, curr.ridCode) ? prev : curr;
+    offers.filter( function(offer) {
+        if (bestOffer == null) {
+            bestOffer = offer;
+        }
+        else if (bestOffer.offers[0].price == offer.offers[0].price) {
+            bestOffer = findClosestHotel(bestOffer.ridCode, offer.ridCode, lat, lng) ? bestOffer : offer;
         }
         else {
-            prev.price < curr.price ? prev : curr;
+            bestOffer = bestOffer.offers[0].price < offer.offers[0].price ? bestOffer : offer;
         }
     });
 
     let hotel = findHotelByRidCode(bestOffer.ridCode);
 
     return {
-        "ridCode": hotels.ridCode,
+        "ridCode": hotel.ridCode,
         "countryCode": hotel.countryCode,
         "localRating": hotel.localRating,
         "address": hotel.address,
         "commercialName": hotel.commercialName,
-        "distance": getDistance(hotel),
+        "distance": getDistance(hotel, lat, lng),
         "offer": {
-            "date": bestOffer[0].date,
-            "fare": bestOffer[0].fare,
-            "price": bestOffer[0].price
+            "date": bestOffer.offers[0].date,
+            "fare": bestOffer.offers[0].fare,
+            "price": bestOffer.offers[0].price
         }
     };
 
 }
 
-function findClosestHotel(prevRidCode, currRidCode) {
-    return compareDistance(prevRidCode, currRidCode);
-}
+function findClosestHotel(prevRidCode, currRidCode, lat, lng) {
 
-function compareDistance(prevRidCode, currRidCode) {
-    let lat = currentPosition.latitude;
-    let longitude = currentPosition.longitude;
     let prevHotel = findHotelByRidCode(prevRidCode);
     let currHotel = findHotelByRidCode(currRidCode);
 
-    let prevDistance = getDistance(prevHotel);
-    let currDistance = getDistance(currHotel);
+    let prevDistance = getDistance(prevHotel, lat, lng);
+    let currDistance = getDistance(currHotel, lat, lng);
 
     return (prevDistance < currDistance) ? true : false;
 }
 
-function getDistance(hotel) {
-    //let currentPosition = getCurrentPosition();
-    return distance(hotel.longitude, hotel.latitude, currentPosition.lat, currentPosition.lng); //en km
+function getDistance(hotel, lat, lng) {
+
+    return helper.distance(hotel.latitude, hotel.longitude, lat, lng);
 }
 
 function findHotelByRidCode(ridCode) {
+
     const hotels = hotelService.getHotels();
-    return hotels.filter( (hotel) => hotel.ridCode === ridCode );
+    return hotels.filter( (hotel) => hotel.ridCode == ridCode )[0];
 }
-
-/*function distance(lat1, lon1, lat2, lon2) {
-    const R = 6371e3; // metres
-    const φ1 = lat1 * Math.PI/180; // φ, λ in radians
-    const φ2 = lat2 * Math.PI/180;
-    const Δφ = (lat2-lat1) * Math.PI/180;
-    const Δλ = (lon2-lon1) * Math.PI/180;
-
-    const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-              Math.cos(φ1) * Math.cos(φ2) *
-              Math.sin(Δλ/2) * Math.sin(Δλ/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-    const d = R * c; // in metres
-
-    return d;
-}*/
 
 function getRidCodes(hotels) {
     let ridCodes = [];
@@ -184,9 +154,22 @@ function getRidCodes(hotels) {
     return ridCodes;
 }
 
+function getUserById(id) {
+    const users = userService.getUsers();
+    return users.filter( (user) => user.id == id)[0];
+}
+
+function getUserType(user) {
+    const specialOffer = "SPECIAL_OFFER";
+    const usualOffer = "STANDARD";
+
+    return user.subscribed ? specialOffer : usualOffer;
+}
+
 
 module.exports = {
    findHotelsNearby: findHotelsNearby,
+   findHotelsNearbyByDate: findHotelsNearbyByDate,
    findHotelNearbyWithBestOffer: findHotelNearbyWithBestOffer,
    findHotelNearbyWithBestOfferForUser: findHotelNearbyWithBestOfferForUser
 }
