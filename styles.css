@@ -27,14 +27,13 @@ a {
         align-items: flex-start;
     }
 
-        .flex-item {
+        .flex-item-right {
 
         }
 
         .hotel-photo {
             order: 0;
             margin-right: 1.2rem;
-            flex-grow: 1;
         }
 
         .hotel-name {
@@ -42,14 +41,22 @@ a {
             flex-grow: 2;
         }
 
+        .mob-name {
+            display: none;
+        }
+
         .hotel-infos {
             order:  2;
             flex-grow: 2;
         }
 
+            .hotel-tarif {
+                min-height: 5.8rem;
+            }
+
             .hotel-tarif-number {
-                            margin-right: 1rem;
-                        }
+                margin-right: 1rem;
+            }
 
 }
 
@@ -71,6 +78,10 @@ a {
 
         .hotel-name {
             order: 0;
+        }
+
+        .desk-name {
+            display: none;
         }
 
         .hotel-photo {
@@ -151,15 +162,10 @@ a {
 
             .hotel-tarif-night {
                 display: block;
-                //float: right;
                 margin: 0.5rem;
-                //margin-right: 1rem;
-                //margin-bottom: 0.5rem;
                 text-align: right;
                 clear: both;
             }
-
-
 
                 .hotel-tarif-member {
                     color: darkblue;
