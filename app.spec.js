@@ -11,12 +11,12 @@ describe('App', () => {
     expect(app.findHotelNearbyWithBestOffer()).toBeNull();
   });
   test('when user is at the center of Paris, and looks for the cheapest offer in hotels around for the date 11/01/2021, an hotel is found', () => {
-    expect(app.findHotelsNearby(48.856564, 2.351711, 2000, '11/01/2021').ridCode).toBeDefined();
+    expect(app.findHotelNearbyWithBestOffer(48.856564, 2.351711, 2000, '11/01/2021').ridCode).toBeDefined();
   });
   test('findHotelNearbyWithBestOfferForUser() returns null when no args are passed', () => {
     expect(app.findHotelNearbyWithBestOfferForUser()).toBeNull();
   });
   test('when a subscribed user is at the center of Paris, and looks for the cheapest offer in hotels around for the date 11/01/2021, an hotel is found', () => {
-    expect(app.findHotelsNearby(48.856564, 2.351711, 2000, '11/01/2021', 2).ridCode).toBeDefined();
+    expect(app.findHotelNearbyWithBestOfferForUser(48.856564, 2.351711, 2000, '11/01/2021', 2).ridCode).toBeDefined();
   });
 });
