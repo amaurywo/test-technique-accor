@@ -4,6 +4,14 @@ describe('App', () => {
   test('findHotelsNearby() returns an empty array when no args are passed', () => {
     expect(app.findHotelsNearby().length).toBe(0);
   });
+  test.only('findHotelsNearby() returns a filtered set of hotels according to arguments', () => {
+    const hotelsNearby = app.findHotelsNearby(48.856564, 2.351711);
+    expect(hotelsNearby.length).toBe(19);
+    expect(hotelsNearby.some((hotel) => hotel.address === '20 Rue du Sommerard, 75005 PARIS')).toBe(true);
+    expect(hotelsNearby.some((hotel) => hotel.address === '22  rue Danielle Casanova, 75002 PARIS')).toBe(true);
+    expect(hotelsNearby.find((hotel) => hotel.address === '22  rue Danielle Casanova, 75002 PARIS').distance).toBe(1966);
+    expect(hotelsNearby.find((hotel) => hotel.address === '20 Rue du Sommerard, 75005 PARIS').distance).toBe(849);
+  });
   test('when user is at the center of Paris, some hotels are found', () => {
     expect(app.findHotelsNearby(48.856564, 2.351711, 2000).length).toBeGreaterThan(0);
   });
