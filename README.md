@@ -74,7 +74,7 @@ Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOffer()* permetta
     "date": "11/01/2021",
     "fare": "STANDARD",
     "price": 60
-  }  
+  }
 }
 ```
 
@@ -121,3 +121,15 @@ Implémenter la partie html et css permettant de représenter visuellement le r�
 Il n'est pas nécessaire de reproduire exactement les couleurs et fonts, mais plutôt de se concentrer sur la disposition des éléments. Les images et logos nécessaires sont disponibles dans le répertoire *resources*.
 
 ![Maquette](./resources/_sample.jpg)
+
+
+Pour voir le front :
+
+
+```
+cd front
+npm i
+npm run dev
+```
+
+Le front a été réalisé avec [Vue.js v3](https://v3.vuejs.org/), [Vite](https://vitejs.dev/), et [tailwindcss](https://tailwindcss.com/)
