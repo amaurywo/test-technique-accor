@@ -2,9 +2,10 @@
   "name": "test-technique",
   "version": "1.0.0",
   "description": "",
-  "main": "test_tech.js",
+  "main": "app.js",
   "scripts": {
-    "lint": "eslint ./*.js",
+    "lint": "eslint ./*.js ./services/**/*.js",
+    "pretest": "npm run lint",
     "test": "jest --coverage"
   },
   "author": "",
