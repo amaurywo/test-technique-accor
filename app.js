@@ -23,14 +23,14 @@ function sortByBestOfferAndCloseness(hotel1, hotel2) {
   return hotel1.distance <= hotel2.distance ? -1 : 0;
 }
 
-function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
+function findHotelNearbyWithBestOffer(lat, lng, radius, date, isSubscribed = false) {
   if (arguments.length === 0) {
     return null;
   }
 
   const hotelsNearby = findHotelsNearby(lat, lng, radius);
   const hotelsNearbyWithPriceForDate = hotelsNearby.map((hotel) => {
-    const offer = priceService.getHotelBestPriceForDate(hotel.ridCode, date);
+    const offer = priceService.getHotelBestPriceForDate(hotel.ridCode, date, isSubscribed);
     return {
       ...hotel,
       offer,
@@ -48,8 +48,10 @@ function findHotelNearbyWithBestOfferForUser(lat, lng, radius, date, userId) {
   if (arguments.length === 0) {
     return null;
   }
-  // TODO implement me
-  return null;
+
+  const isSubscribed = !!userService.getUserById(userId).subscribed;
+
+  return findHotelNearbyWithBestOffer(lat, lng, radius, date, isSubscribed);
 }
 
 module.exports = {

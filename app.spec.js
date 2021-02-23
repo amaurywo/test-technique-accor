@@ -25,7 +25,7 @@ describe('App', () => {
     expect(typeof hotelWithBestOffer === 'object').toBe(true);
     expect(Array.isArray(hotelWithBestOffer.offer)).toBe(false);
     expect(hotelWithBestOffer.ridCode).toBe('A013');
-    expect(hotelWithBestOffer.offer.price).toBe(74);
+    expect(hotelWithBestOffer.offer.price).toBe(78);
   });
   test('findHotelNearbyWithBestOfferForUser() returns null when no args are passed', () => {
     expect(app.findHotelNearbyWithBestOfferForUser()).toBeNull();

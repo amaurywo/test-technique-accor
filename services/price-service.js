@@ -10,17 +10,17 @@ const getPrices = () => PRICES;
 
 const isTruthy = (value) => !!value;
 
-const getHotelBestPriceForDate = (hotelRidCode, date) => {
+const getHotelBestPriceForDate = (hotelRidCode, date, isSubscribed = false) => {
   const pricesForDate = PRICES
     .filter(
       (price) => hotelRidCode === price.ridCode
-        && price.offers.some((offer) => offer.date === date),
+        && price.offers.some((offer) => offer.date === date && (isSubscribed ? true : offer.fare !== 'SPECIAL_OFFER')),
     );
 
   const bestPricesForDate = pricesForDate
     .map(
       (price) => price.offers
-        .slice() // copy to mutate it freely
+        .filter((offer) => (isSubscribed ? true : offer.fare !== 'SPECIAL_OFFER'))
         .sort(sortByPrice)
         .shift(),
     )

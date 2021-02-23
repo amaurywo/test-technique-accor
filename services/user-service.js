@@ -1,9 +1,10 @@
 const USERS = require('./data/users.json').users;
 
-const getUsers = () => {
-	return USERS;
-}
+const getUsers = () => USERS;
+
+const getUserById = (id) => USERS.find((user) => user.id === id);
 
 module.exports = {
-	getUsers: getUsers
-}
+  getUsers,
+  getUserById,
+};
