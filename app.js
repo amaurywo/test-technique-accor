@@ -7,14 +7,20 @@ function findHotelsNearby(lat, lng, radius = 2000) {
   if (arguments.length === 0) {
     return [];
   }
-  const result = hotelService.getHotels()
+  const hotelsNearby = hotelService.getHotels()
     .filter((hotel) => helper.distance(lat, lng, hotel.latitude, hotel.longitude) <= radius)
     .map((hotel) => ({
       ...hotel,
       distance: Math.round(helper.distance(lat, lng, hotel.latitude, hotel.longitude)),
     })); // Maybe use reduce instead of filter+map if performance is an issue?
 
-  return result;
+  return hotelsNearby;
+}
+
+function sortByBestOfferAndCloseness(hotel1, hotel2) {
+  if (hotel1.offer.price < hotel2.offer.price) { return -1; }
+  if (hotel1.offer.price > hotel2.offer.price) { return 1; }
+  return hotel1.distance <= hotel2.distance ? -1 : 0;
 }
 
 function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
@@ -22,8 +28,20 @@ function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
     return null;
   }
 
-  // TODO implement me
-  return null;
+  const hotelsNearby = findHotelsNearby(lat, lng, radius);
+  const hotelsNearbyWithPriceForDate = hotelsNearby.map((hotel) => {
+    const offer = priceService.getHotelBestPriceForDate(hotel.ridCode, date);
+    return {
+      ...hotel,
+      offer,
+    };
+  });
+
+  const hotelNearbyBestOffer = hotelsNearbyWithPriceForDate
+    .sort(sortByBestOfferAndCloseness)
+    .shift();
+
+  return hotelNearbyBestOffer;
 }
 
 function findHotelNearbyWithBestOfferForUser(lat, lng, radius, date, userId) {

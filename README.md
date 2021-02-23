@@ -43,7 +43,7 @@ Inclure également dans le résultat la distance (nombre entier en mètres) entr
     "localRating": 4,
     "address": "20 Rue du Sommerard, 75005 PARIS",
     "commercialName": "Hôtel Mercure Paris Notre-Dame Saint-Germain-des-Prés",
-    "distance": 84
+    "distance": 849
   },
   ...
   {
