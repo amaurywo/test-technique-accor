@@ -80,44 +80,12 @@ Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOffer()* permetta
 
 ### Etape n°3
 
-Les utilisateurs ayant souscrit au programme de fidélité bénéficient d'un tarif préférentiel dans certains hotels.
-
-Le champ *subscribed* permet d'identifier les utilisateurs ayant souscrit:
-```javascript
-/* users.json: exemple d'utilisateur ayant souscrit */
-{
-  "id": 1,
-  "name": "Leanne Graham",
-    ...
-  "subscribed": true
-}
-```
-Ces utilisateurs peuvent réserver des chambres avec un prix de type "SPECIAL_OFFER":
-```javascript
-/* prices.json: exemple d'offre avec un prix de type STANDARD et un prix de type SPECIAL_OFFER */
-{
-  "ridCode": "A025",
-  "offers": [
-    {
-      "date": "11/01/2021",
-      "fare": "SPECIAL_OFFER",
-      "price": 50
-    },
-    {
-      "date": "11/01/2021",
-      "fare": "STANDARD",
-      "price": 60
-    }
-  ]
-}
-```
-
-Implémenter dans *app.js* la fonction *findHotelNearbyWithBestOfferForUser()* permettant de retourner l'offre de chambre la moins chère parmi les hôtels dans un rayon de 2 km autour d'une position donnée, pour une date donnée, et pour un profil utilisateur donné. Vous pouvez librement ajouter du code aux services si besoin.
-
-### Etape n°4
-
-Implémenter la partie html et css permettant de représenter visuellement le résultat de l'étape 3, comme dans l'image ci-dessous. Seule la partie visuelle est demandée, il n'est pas nécessaire d'implémenter le comportement des boutons.
+Implémenter la partie html et css permettant de représenter visuellement une proposition d'hôtel, comme dans l'image ci-dessous. Seule la partie visuelle est demandée, il n'est pas nécessaire d'implémenter le comportement des boutons.
 
 Il n'est pas nécessaire de reproduire exactement les couleurs et fonts, mais plutôt de se concentrer sur la disposition des éléments. Les images et logos nécessaires sont disponibles dans le répertoire *resources*.
+
+Vous pouvez directement éditer les fichiers index.html et styles.css dans le projet.
+
+Vous pouvez également ajouter un préprocesseur CSS (less, sass, stylus...) mais ne pas utiliser de lib tierce comme Bootstrap, Vuetify, Tailwind, etc.
 
 ![Maquette](./resources/_sample.jpg)
