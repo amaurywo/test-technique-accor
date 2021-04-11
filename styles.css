@@ -1,0 +1,146 @@
+/*
+    Grid (container driven) instead of flex (content driven) layout
+    With no responsive target: float could have been a candidate
+ */
+.hotel-item {
+    display: grid;
+    grid-template-columns: 277px auto;
+    grid-template-rows: auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+
+    font-family: Arial;
+
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.hotel-item > * {
+    padding: 0;
+    margin: 0;
+}
+
+/* Contain photo inside column width (photo width > column width) */
+
+.hotel-item .photo-wrapper .photo {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Adjust margin between description blocks */
+
+.hotel-item .description-wrapper > * {
+    margin-bottom: 3px;
+}
+
+.hotel-item .description-wrapper > .title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.hotel-item .star-wrapper {
+    margin-left: 5px;
+}
+
+/* Hotel star icons: svg, small, and aligned to top */
+
+.hotel-item .rating-star-icon {
+    vertical-align: top;
+    width: 6px;
+    height: 6px;
+    margin-right: -3px;
+}
+
+.hotel-item .meta {
+    font-size: .7em;
+    color: #888;
+}
+
+.hotel-item .reviews {
+    font-size: .7em;
+}
+
+.hotel-item .reviews .trip-advisor-bullets {
+    vertical-align: bottom;
+}
+
+.hotel-item .reviews .trip-advisor-rank {
+    font-weight: bold;
+    color: #444;
+}
+
+.hotel-item .reviews .trip-advisor-reviews {
+    margin-left: 10px;
+}
+
+.hotel-item .facility-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.hotel-item .fees .title {
+    text-align: right;
+    margin-bottom: -9px;
+    padding-right: 15px;
+}
+
+/* Rounded white block, overlapping next description block */
+
+.hotel-item .fees .title .from {
+    padding: 4px 16px;
+    background-color: #FFF;
+    border-radius: 1000px;
+    text-transform: uppercase;
+    color: #444;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.hotel-item .fees .description {
+    background-color: #F4F4F4;
+    border-radius: 5px;
+    padding: 30px 15px 30px 15px;
+    color: #888;
+    text-align: right;
+    font-size: 0.7em;
+}
+
+.hotel-item .fees .description > * {
+    margin-bottom: 10px;
+}
+
+.hotel-item .fees .description .prices {
+    color: #444;
+}
+
+.hotel-item .fees .description .amount,
+.hotel-item .fees .description .currency {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.hotel-item .button-wrapper > .button
+{
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 20px;
+    font-size: 0.8em;
+}
+
+.hotel-item .button-wrapper
+{
+    padding-top: 10px;
+}
+
+.hotel-item .button-wrapper > .button.select-room
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    float: right;
+    border-radius: 1000px;
+    background-color: #058284;
+    color: white;
+}
+

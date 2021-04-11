@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Test technique</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
+	<meta charset="UTF-8">
+	<title>Test technique</title>
+	<link rel="stylesheet" type="text/css" href="./styles.css"/>
 </head>
 <body>
-    <!-- Les images et logos sont disponibles dans ./resources -->
-    <img src="./resources/hotel.jpg"/>
+
+<div class="hotel-item">
+	<div class="photo-wrapper">
+		<img class="photo" src="./resources/hotel.jpg" alt="Photo Novotel Paris Les Halles" />
+	</div>
+	<div class="description-wrapper">
+
+		<div class="title">
+			<span class="name">Novotel Paris Les Halles</span>
+			<span class="star-wrapper">
+                    <img class="rating-star-icon" src="./resources/rating-star.svg"/>
+                    <img class="rating-star-icon" src="./resources/rating-star.svg"/>
+                    <img class="rating-star-icon" src="./resources/rating-star.svg"/>
+                    <img class="rating-star-icon" src="./resources/rating-star.svg" alt="Novotel Paris Les Halles: Hotel 4 étoiles"/>
+                </span>
+		</div>
+		<div class="meta">
+			<span class="type">Hotels</span>
+			<span>-</span>
+			<span class="distance">0.6 km de votre recherche</span>
+		</div>
+		<div class="reviews">
+                <span class="trip-advisor">
+                    <img class="trip-advisor-bullets" src="./resources/tripadvisor.png" alt="Classement TripAdvisor 4 sur 5" />
+                    <span class="trip-advisor-rank">4/5</span>
+                    <span class="trip-advisor-reviews">(5563 Avis)</span>
+                </span>
+		</div>
+		<div class="facilities">
+			<img class="facility-icon" src="./resources/parking.svg" alt="Parking"/>
+			<img class="facility-icon" src="./resources/wifi.svg" alt="Wifi"/>
+			<img class="facility-icon" src="./resources/restaurant.svg" alt="Restaurant"/>
+			<img class="facility-icon" src="./resources/air-conditioning.svg" alt="Climatisation"/>
+			<img class="facility-icon" src="./resources/beverage.svg" alt="Boissons"/>
+		</div>
+		<div class="fees">
+			<div class="title">
+				<span class="from">Tarifs à partir de (1)</span>
+			</div>
+			<div class="description">
+				<div class="conditions">
+					<span class="duration">Pour une nuit</span>
+					<span>|</span>
+					<span class="guests">1 adulte</span>
+				</div>
+				<!-- Assuming prices and currency are customizable from search parameters / user preferences -->
+				<div class="prices">
+					<span class="price public">Public <span class="amount">220</span> <span
+							class="currency">€</span></span>
+					<span class="price member">Membre <span class="amount">209</span> <span
+							class="currency">€</span></span>
+				</div>
+			</div>
+		</div>
+
+        <div class="button-wrapper">
+            <span class="button view-calendar"><a href="#" alt="Voir le calendrier des prix">Voir le calendrier des prix</a></span>
+            <span class="button select-room" alt="Sélectionner une chambre">Sélectionner une chambre</span>
+        </div>
+
+	</div>
+</div>
+
 </body>
 </html>
