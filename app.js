@@ -24,12 +24,36 @@ const radiusHotelFilter = (radius, lat, lng) => (hotel) => {
   }
 };
 
+
+/**
+ *
+ * @param {String} ridCode - reference de l'hotel
+ * @returns {Array} - liste des offres
+ */
+const getPriceOffersByHotel = (ridCode) => {
+	return getPrices().find(price => price.ridCode === ridCode);
+}
+
+/**
+ *
+ * @param {Array} Liste des hotels à proximité
+ * @return {Object} Liste des offres par ridCode
+ */
+const aggregateOffersByHotels = (hotelsNearBy) =>
+  hotelsNearBy.reduce((acc, hotel) => {
+    const priceOffersHotel = getPriceOffersByHotel(hotel.ridCode);
+    return {
+      ...acc,
+      [hotel.ridCode]: priceOffersHotel.offers,
+    };
+  }, {});
+
 /**
  *
  * @param {Number} lat
  * @param {Number} lng
  * @param {Number} radius
- * @returns list of hotels around specific radius
+ * @returns list des hôtels autour de moi qui ont un radius spécifique
  */
 function findHotelsNearby(lat, lng, radius) {
   // TODO implement me
@@ -38,6 +62,10 @@ function findHotelsNearby(lat, lng, radius) {
 
 function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
   // TODO implement me
+  const hotelsNearBy = findHotelsNearby(lat, lng, radius);
+//   console.log(hotelsNearBy, "hotelsNearBy");
+  const offersbyHotel = aggregateOffersByHotels(hotelsNearBy);
+  console.log(offersbyHotel, "offersbyHotel");
   return null;
 }
 
