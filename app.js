@@ -1,75 +1,43 @@
 const userService = require("./services/user-service");
 const { getHotels } = require("./services/hotel-service");
-const { getPrices } = require("./services/price-service");
-const { distance } = require("./services/helper");
+
+const {
+  hotelDistanceFilter,
+  enrichDistanceHotel,
+  cleanHotelProperties,
+  getBestOfferByDate,
+} = require("./libs");
+/**
+ * @param {Number} lat - coordonnée (latitude)
+ * @param {Number} lng - coordonnée (longitude)
+ * @param {Number} distance - distance en mètres
+ * @returns {Array} - liste d'hotel dans le périmètre souhaité
+ */
+function findHotelsNearby(lat, lng, distance) {
+	return getHotels()
+		.map(enrichDistanceHotel(lat, lng))
+		.filter(hotelDistanceFilter(distance))
+		.map(cleanHotelProperties);
+}
 
 /**
- *
- * @param {Number} radius
+ * Retourne la meilleur offre du jour dans un rayon de n mètres
  * @param {Number} lat
  * @param {Number} lng
- * @returns
+ * @param {Number} distance
+ * @param {String} date
+ * @returns {Object|null}
  */
-const radiusHotelFilter = (radius, lat, lng) => (hotel) => {
-  const d = distance(lat, lng, hotel.latitude, hotel.longitude);
-  if (d < radius) {
-    return {
-      idCode: hotel.ridCode,
-      countryCode: hotel.countryCode,
-      localRating: hotel.localRating,
-      address: hotel.address,
-      commercialName: hotel.commercialName,
-      distance: parseFloat(d).toFixed(),
-    };
-  }
-};
+function findHotelNearbyWithBestOffer(lat, lng, distance, date) {
+	const hotelsNearBy = findHotelsNearby(lat, lng, distance);
 
+	const bestOffer = getBestOfferByDate(hotelsNearBy, date);
 
-/**
- *
- * @param {String} ridCode - reference de l'hotel
- * @returns {Array} - liste des offres
- */
-const getPriceOffersByHotel = (ridCode) => {
-	return getPrices().find(price => price.ridCode === ridCode);
+    return bestOffer || null;
 }
 
-/**
- *
- * @param {Array} Liste des hotels à proximité
- * @return {Object} Liste des offres par ridCode
- */
-const aggregateOffersByHotels = (hotelsNearBy) =>
-  hotelsNearBy.reduce((acc, hotel) => {
-    const priceOffersHotel = getPriceOffersByHotel(hotel.ridCode);
-    return {
-      ...acc,
-      [hotel.ridCode]: priceOffersHotel.offers,
-    };
-  }, {});
-
-/**
- *
- * @param {Number} lat
- * @param {Number} lng
- * @param {Number} radius
- * @returns list des hôtels autour de moi qui ont un radius spécifique
- */
-function findHotelsNearby(lat, lng, radius) {
-  // TODO implement me
-  return getHotels().filter(radiusHotelFilter(radius, lat, lng));
-}
-
-function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
-  // TODO implement me
-  const hotelsNearBy = findHotelsNearby(lat, lng, radius);
-//   console.log(hotelsNearBy, "hotelsNearBy");
-  const offersbyHotel = aggregateOffersByHotels(hotelsNearBy);
-  console.log(offersbyHotel, "offersbyHotel");
-  return null;
-}
 
 module.exports = {
-  findHotelsNearby: findHotelsNearby,
-  findHotelNearbyWithBestOffer: findHotelNearbyWithBestOffer,
+  findHotelsNearby,
+  findHotelNearbyWithBestOffer,
 };
