@@ -13,7 +13,12 @@ const {distance} = require('./services/helper');
  */
 function findHotelsNearby(lat, lng, radius) {
     // TODO implement me
-	return [];
+	  const allHotels = getHotels().filter((hotel) => {
+      const d = distance(lat, lng, hotel.latitude, hotel.longitude);
+      console.log(d, 'distance');
+      return d < radius;
+    });
+    console.log(allHotels, "allHotels");
 }
 
 function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
