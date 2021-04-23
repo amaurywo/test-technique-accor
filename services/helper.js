@@ -16,5 +16,5 @@ const distance = (lat1, lon1, lat2, lon2) => {
 }
 
 module.exports = {
-	distance: distance
+	distance
 }

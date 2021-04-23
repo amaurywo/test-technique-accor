@@ -5,5 +5,5 @@ const getHotels = () => {
 }
 
 module.exports = {
-	getHotels: getHotels
+	getHotels
 }
