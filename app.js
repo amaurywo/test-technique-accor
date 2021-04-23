@@ -12,7 +12,16 @@ const { distance } = require("./services/helper");
  */
 const radiusHotelFilter = (radius, lat, lng) => (hotel) => {
   const d = distance(lat, lng, hotel.latitude, hotel.longitude);
-  return d < radius;
+  if (d < radius) {
+    return {
+      idCode: hotel.ridCode,
+      countryCode: hotel.countryCode,
+      localRating: hotel.localRating,
+      address: hotel.address,
+      commercialName: hotel.commercialName,
+      distance: parseFloat(d).toFixed(),
+    };
+  }
 };
 
 /**
