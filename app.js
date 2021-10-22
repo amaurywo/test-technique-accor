@@ -10,18 +10,25 @@ function findHotelsNearby(lat, lng, radius) {
   return hotelService.getHotels().reduce((hotels, hotel) => {
     const distance = helper.distance(lat, lng, hotel.latitude, hotel.longitude);
     if (distance <= radius) {
-      hotel.distance = distance;
-      delete hotel.latitude;
-      delete hotel.longitude;
-      hotels.push(hotel);
+      const result = {
+        distance: parseInt(distance.toFixed()),
+        ...hotel,
+      };
+      delete result.latitude;
+      delete result.longitude;
+      hotels.push(result);
     }
     return hotels;
   }, []);
 }
 
 function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
-  // TODO implement me
-  return null;
+  if (!lat || !lng || !radius || !date) {
+    return null;
+  }
+  const hotels = findHotelsNearby(lat, lng, radius);
+  const prices = priceService.getCheapestHotelByDate(hotels, date, "STANDARD");
+  return hotels.find((hotel) => (hotel.ridCode = prices.ridCode));
 }
 
 module.exports = {
