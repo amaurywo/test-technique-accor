@@ -28,7 +28,11 @@ function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
   }
   const hotels = findHotelsNearby(lat, lng, radius);
   const prices = priceService.getCheapestHotelByDate(hotels, date, "STANDARD");
-  return hotels.find((hotel) => (hotel.ridCode = prices.ridCode));
+  const result = hotels.find((hotel) => (hotel.ridCode = prices.ridCode));
+  return {
+    ...result,
+    offer: prices.offer,
+  };
 }
 
 module.exports = {

@@ -21,5 +21,13 @@ describe("App", () => {
       app.findHotelNearbyWithBestOffer(48.856564, 2.351711, 2000, "11/01/2021")
         .ridCode
     ).toBeDefined();
+    expect(
+      app.findHotelNearbyWithBestOffer(48.856564, 2.351711, 2000, "11/01/2021")
+        .offer.date
+    ).toBe("11/01/2021");
+    expect(
+      app.findHotelNearbyWithBestOffer(48.856564, 2.351711, 2000, "11/01/2021")
+        .offer.fare
+    ).toBe("STANDARD");
   });
 });

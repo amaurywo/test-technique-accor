@@ -24,7 +24,11 @@ const getCheapestHotelByDate = (hotels, date, fare = "STANDARD") => {
       a.offer.price - b.offer.price || hotel.distance - secondHotel.distance
     );
   });
-  return result[0];
+  const { ridCode, offer } = result[0];
+  return {
+    ridCode,
+    offer,
+  };
 };
 
 module.exports = {
