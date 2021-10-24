@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Test technique</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-</head>
-<body>
+  </head>
+  <body>
     <!-- Les images et logos sont disponibles dans ./resources -->
-    <img src="./resources/hotel.jpg"/>
-</body>
+    <section class="hotel">
+      <div id="info">
+        <img src="./resources/hotel.jpg" id="hotel" />
+      </div>
+      <div id="action">
+        <div>
+          <h1>Novotel Paris Les Halles <span>****</span></h1>
+          <p>Hôtels - 0.6 km de votre recherche</p>
+          <div id="resource">
+            <span>
+              <img src="./resources\tripadvisor.png" alt="tripadvisor" />
+              4/5 (5563 Avis)
+            </span>
+            <span id="availableOptions"
+              ><img src="./resources/parking.svg" alt="parking" />
+              <img src="./resources/wifi.svg" alt="parking" />
+              <img src="./resources/restaurant.svg" alt="parking" />
+              <img src="./resources/air-conditioning.svg" alt="parking" />
+              <img src="./resources/beverage.svg" alt="parking"
+            /></span>
+          </div>
+        </div>
+        <div id="tarif">
+          <p>Tarif à partir de (1)</p>
+
+          <p>Pour 1 nuit | 1 adulte</p>
+          <p>Public 220 € | <span id="member">Membre 209 €</span></p>
+        </div>
+        <div id="action-call">
+          <a href="#">Voir le calendrier des prix</a>
+          <button>Sélectionner une chambre</button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

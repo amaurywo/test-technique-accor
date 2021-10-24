@@ -1,19 +1,43 @@
-const userService = require('./services/user-service');
-const hotelService = require('./services/hotel-service');
-const priceService = require('./services/price-service');
-const helper = require('./services/helper');
+const userService = require("./services/user-service");
+const hotelService = require("./services/hotel-service");
+const priceService = require("./services/price-service");
+const helper = require("./services/helper");
 
 function findHotelsNearby(lat, lng, radius) {
-    // TODO implement me
-	return [];
+  if (!lat || !lng || !radius) {
+    return [];
+  }
+  return hotelService.getHotels().reduce((hotels, hotel) => {
+    const distance = helper.distance(lat, lng, hotel.latitude, hotel.longitude);
+    if (distance <= radius) {
+      const result = {
+        distance: parseInt(distance.toFixed()),
+        ...hotel,
+      };
+      delete result.latitude;
+      delete result.longitude;
+      hotels.push(result);
+    }
+    return hotels;
+  }, []);
 }
 
 function findHotelNearbyWithBestOffer(lat, lng, radius, date) {
-    // TODO implement me
+  if (!lat || !lng || !radius || !date) {
     return null;
+  }
+  const hotels = findHotelsNearby(lat, lng, radius);
+  const hotelsPrices = priceService.getPriceByDate(hotels, date, "STANDARD");
+
+  const prices = priceService.getCheapestPrice(hotelsPrices);
+  const result = hotels.find((hotel) => (hotel.ridCode = prices.ridCode));
+  return {
+    ...result,
+    offer: prices.offer,
+  };
 }
 
 module.exports = {
-	findHotelsNearby: findHotelsNearby,
-	findHotelNearbyWithBestOffer: findHotelNearbyWithBestOffer
-}
+  findHotelsNearby: findHotelsNearby,
+  findHotelNearbyWithBestOffer: findHotelNearbyWithBestOffer,
+};

@@ -1,9 +1,9 @@
-const HOTELS = require('./data/hotels.json').hotels;
+const HOTELS = require("./data/hotels.json").hotels;
 
 const getHotels = () => {
-	return HOTELS;
-}
+  return HOTELS;
+};
 
 module.exports = {
-	getHotels: getHotels
-}
+  getHotels: getHotels,
+};
