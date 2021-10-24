@@ -4,26 +4,43 @@ const getPrices = () => {
   return PRICES;
 };
 
-const getCheapestHotelByDate = (hotels, date, fare = "STANDARD") => {
+const getPriceByDate = (hotels, date, fare = "STANDARD") => {
   if (!hotels || !hotels.length || !date) {
     return null;
   }
-  const hotelsPrices = PRICES.reduce((prices, price) => {
+  return PRICES.reduce((prices, price) => {
     if (hotels.find((hotel) => hotel.ridCode === price.ridCode)) {
-      price.offer = price.offers.find(
-        (offer) => offer.fare === fare && offer.date === date
-      );
-      prices.push(price);
+      const offer = {
+        ...price,
+        offer: price.offers.find(
+          (offer) => offer.fare === fare && offer.date === date
+        ),
+      };
+      delete offer.offers;
+      prices.push(offer);
     }
     return prices;
   }, []);
-  const result = hotelsPrices.sort((a, b) => {
-    const hotel = hotels.find((h) => h.ridCode === a.ridCode);
-    const secondHotel = hotels.find((h) => h.ridCode === b.ridCode);
+};
+
+const sortByPriceAndDistance = (hotelsPrices) => {
+  if (!hotelsPrices) {
+    return null;
+  }
+  return hotelsPrices.sort((a, b) => {
+    const hotel = PRICES.find((h) => h.ridCode === a.ridCode);
+    const secondHotel = PRICES.find((h) => h.ridCode === b.ridCode);
     return (
       a.offer.price - b.offer.price || hotel.distance - secondHotel.distance
     );
   });
+};
+
+const getCheapestPrice = (hotelsPrices) => {
+  if (!hotelsPrices) {
+    return null;
+  }
+  const result = sortByPriceAndDistance(hotelsPrices);
   const { ridCode, offer } = result[0];
   return {
     ridCode,
@@ -33,5 +50,7 @@ const getCheapestHotelByDate = (hotels, date, fare = "STANDARD") => {
 
 module.exports = {
   getPrices: getPrices,
-  getCheapestHotelByDate,
+  sortByPriceAndDistance,
+  getPriceByDate,
+  getCheapestPrice,
 };
