@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Test technique</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-</head>
-<body>
+  </head>
+  <body>
     <!-- Les images et logos sont disponibles dans ./resources -->
-    <img src="./resources/hotel.jpg"/>
-</body>
+    <section class="hotel">
+      <div class="hotel__info">
+        <img src="./resources/hotel.jpg" class="hotel__img" />
+      </div>
+      <div class="hotel__action">
+        <div>
+          <h1 class="hotel__action__hotel-name">
+            Novotel Paris Les Halles <span>****</span>
+          </h1>
+          <p class="hotel__action__hotel-distance">
+            Hôtels - 0.6 km de votre recherche
+          </p>
+          <div class="hotel__resource">
+            <span>
+              <img src="./resources\tripadvisor.png" alt="tripadvisor" />
+              4/5 (5563 Avis)
+            </span>
+            <span class="hotel__available-options"
+              ><img
+                class="hotel__available-options__option"
+                src="./resources/parking.svg"
+                alt="parking" />
+              <img
+                class="hotel__available-options__option"
+                src="./resources/wifi.svg"
+                alt="parking" />
+              <img
+                class="hotel__available-options__option"
+                src="./resources/restaurant.svg"
+                alt="parking" />
+              <img
+                class="hotel__available-options__option"
+                src="./resources/air-conditioning.svg"
+                alt="parking" />
+              <img
+                class="hotel__available-options__option"
+                src="./resources/beverage.svg"
+                alt="parking"
+            /></span>
+          </div>
+        </div>
+        <div class="hotel__tarif">
+          <p>Tarif à partir de (1)</p>
+
+          <p>Pour 1 nuit | 1 adulte</p>
+          <p>Public 220 € | <span class="hotel__member">Membre 209 €</span></p>
+        </div>
+        <div class="hotel__action-call">
+          <a href="#">Voir le calendrier des prix</a>
+          <button class="hotel__action-call__button">
+            Sélectionner une chambre
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

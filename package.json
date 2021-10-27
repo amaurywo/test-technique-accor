@@ -4,7 +4,8 @@
   "description": "",
   "main": "test_tech.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "sass": "sass --watch styles.scss styles.css"
   },
   "author": "",
   "license": "ISC",

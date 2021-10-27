@@ -1,0 +1,75 @@
+.hotel {
+  width: 60%;
+  height: 18em;
+  border-radius: 2%;
+  box-shadow: 10px 5px 5px lightgrey;
+  display: flex;
+  position: relative;
+}
+.hotel__info {
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.hotel__img {
+  border-radius: 5%;
+  width: 95%;
+  height: 80%;
+}
+.hotel__action {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 56%;
+  height: inherit;
+}
+.hotel__action__hotel-name, .hotel__action__hotel-distance {
+  margin: 0.2em;
+}
+.hotel__resource {
+  display: flex;
+  flex-direction: column;
+}
+.hotel__available-options__option {
+  width: 1.5em;
+}
+.hotel__tarif {
+  background-color: #f4f4f6;
+  height: 8em;
+  border-radius: 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+.hotel__tarif p:first-child {
+  position: absolute;
+  right: 10px;
+  top: -15px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 0.2em;
+}
+.hotel__member {
+  color: blue;
+}
+.hotel__action-call {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hotel__action-call__button {
+  background-color: #028584;
+  color: white;
+  width: 40%;
+  border-radius: 21%;
+  padding: 1%;
+}
+
+/*# sourceMappingURL=styles.css.map */
