@@ -6,22 +6,19 @@
   display: flex;
   position: relative;
 }
-
-#info {
+.hotel__info {
   height: 100%;
   width: 40%;
   position: absolute;
   top: 2%;
   left: 2%;
 }
-
-#info img {
+.hotel__img {
   border-radius: 5%;
   width: 95%;
   height: 80%;
 }
-
-#action {
+.hotel__action {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -30,26 +27,17 @@
   width: 56%;
   height: inherit;
 }
-
-#action h1,
-#action p {
+.hotel__action__hotel-name, .hotel__action__hotel-distance {
   margin: 0.2em;
 }
-
-#resource {
+.hotel__resource {
   display: flex;
   flex-direction: column;
 }
-
-#availableOptions img {
+.hotel__available-options__option {
   width: 1.5em;
 }
-
-#member {
-  color: blue;
-}
-
-#tarif {
+.hotel__tarif {
   background-color: #f4f4f6;
   height: 8em;
   border-radius: 5%;
@@ -59,8 +47,7 @@
   justify-content: center;
   align-items: end;
 }
-
-#tarif p:first-child {
+.hotel__tarif p:first-child {
   position: absolute;
   right: 10px;
   top: -15px;
@@ -68,18 +55,21 @@
   border-radius: 2px;
   padding: 0.2em;
 }
-
-#action-call {
+.hotel__member {
+  color: blue;
+}
+.hotel__action-call {
   margin-top: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-#action-call button {
+.hotel__action-call__button {
   background-color: #028584;
   color: white;
   width: 40%;
   border-radius: 21%;
   padding: 1%;
 }
+
+/*# sourceMappingURL=styles.css.map */
